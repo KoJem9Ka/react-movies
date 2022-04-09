@@ -9,11 +9,19 @@ const API_KEY = process.env.REACT_APP_API_KEY
 export class Main extends Component {
 	state = {
 		loading: true,
-		movies: []
+		search: '',
+		type: '',
+		currentPage: 1,
+		movies: [],
+		totalMoviesCount: 0,
 	}
 
 	searchMovies = (s, type = '', page = 1) => {
-		this.setState({loading: true}, () => {
+		this.setState({
+			loading: true,
+			search: s,
+			type: type
+		}, () => {
 			let params = []
 			params.push(`s=${s}`)
 			if (type !== '')
@@ -22,24 +30,45 @@ export class Main extends Component {
 				params.push(`page=${page}`)
 			fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&${params.join('&')}`)
 			.then(response => response.json())
-			.then(data => this.setState({movies: data.Search, loading: false}))
+			.then(({Search, totalResults}) => this.setState({
+				movies: Search,
+				totalMoviesCount: parseInt(totalResults),
+				currentPage: page,
+				loading: false,
+			}))
 			.catch(error => {
 				console.error(error);
-				this.setState({loading: false})
+				this.setState({
+					loading: false
+				})
 			})
 		})
 	}
 
 	render() {
-		const {loading, movies = []} = this.state;
+		const {
+			loading,
+			movies = [],
+			totalMoviesCount = 0,
+			currentPage,
+			search,
+			type
+		} = this.state;
 		const {searchMovies} = this;
+
+		const pages = Math.ceil(totalMoviesCount / 10)
 
 		return (
 			<main className={styles.Main}>
 				<Search handler={searchMovies}/>
 				{loading
 					? <Preloader/>
-					: <Movies movies={movies}/>}
+					: <Movies
+						movies={movies}
+						currentPage={currentPage}
+						pagesCount={pages}
+						nextPageHandler={searchMovies.bind(this, search, type)}
+					/>}
 			</main>
 		)
 	}
