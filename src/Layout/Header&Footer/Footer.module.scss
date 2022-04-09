@@ -1,0 +1,14 @@
+@import "../../global_styles/variables";
+
+footer {
+  @include container-by-padding;
+  font-size        : 1rem;
+  display          : flex;
+  justify-content  : space-between;
+  color            : white;
+  background-color : $deep-orange-darken-4;
+
+  a {
+    color : inherit;
+  }
+}

@@ -1,0 +1,13 @@
+@import '../../global_styles/variables';
+
+.Main {
+  $indent    : 2rem;
+  min-height : calc(100vh - 48px - 56px);
+
+  @include container-by-padding($vertical : $indent);
+
+  > * + * {
+    margin : $indent 0 0 0;
+  }
+}
+

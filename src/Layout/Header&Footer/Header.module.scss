@@ -1,0 +1,21 @@
+@import "../../global_styles/variables";
+
+nav {
+  @include container-by-padding;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  background-color: $orange-darken-3;
+
+  & > a:first-child {
+    font-size: 1.5rem;
+  }
+
+  ul {
+    display: flex;
+
+    > * + * {
+      margin-left: 1rem;
+    }
+  }
+}

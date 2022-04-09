@@ -1,0 +1,25 @@
+.search {
+  font-size     : 1.3rem;
+  display       : flex;
+  overflow      : hidden;
+  margin        : 0 30%;
+  border        : 1px solid #ccc;
+  border-radius : 1rem;
+
+  input {
+    flex-grow : 9;
+    margin    : .5rem 1rem;
+  }
+
+  select {
+    padding-left : 1rem;
+
+    &:hover {
+      background-color : #ccc;
+    }
+  }
+
+  button {
+    flex-grow : 1;
+  }
+}

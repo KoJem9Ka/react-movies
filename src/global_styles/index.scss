@@ -1,0 +1,25 @@
+@import "ResetStyles/reset3";
+@import "src/global_styles/variables";
+
+body {
+  font-family: "Segoe UI", serif;
+  color: black;
+}
+
+//.content {
+//  min-height: calc(84.2vh);
+//  padding: 1.5rem 0;
+//}
+
+.container {
+  width: 90vw;
+  max-width: $container;
+  margin: 0 auto;
+}
+
+//
+//.movies {
+//  display: grid;
+//  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+//  gap: 1rem;
+//}
