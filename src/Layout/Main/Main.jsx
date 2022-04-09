@@ -20,9 +20,13 @@ export class Main extends Component {
 				params.push(`type=${type}`)
 			if (page)
 				params.push(`page=${page}`)
-			fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&${params.join('&')}`)
+			fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&${params.join('&')}`)
 			.then(response => response.json())
 			.then(data => this.setState({movies: data.Search, loading: false}))
+			.catch(error => {
+				console.error(error);
+				this.setState({loading: false})
+			})
 		})
 	}
 
