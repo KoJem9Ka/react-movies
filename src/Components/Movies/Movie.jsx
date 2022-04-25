@@ -1,6 +1,6 @@
 import styles from './Movie.module.scss'
 
-export default function Movie(props) {
+export default props => {
 	const {
 		Title: title,
 		Year: year,

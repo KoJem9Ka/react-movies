@@ -7,54 +7,25 @@
 }
 
 .pages {
+  font-size       : 1.3rem;
   display         : flex;
+  flex-wrap       : wrap;
   justify-content : center;
-  margin          : 0 auto;
-  font-size : 1.3rem;
-
-  > * + * {
-    margin-left : 1rem;
-  }
-
-  span, .pagesP {
-    font-weight : 700;
-    padding     : .8rem;
-    transition  : margin, .1s ease;
-    color       : black;
-  }
+  gap             : 1rem;
 
   li {
-    @extend .pagesP;
+    padding          : .6rem;
     cursor           : pointer;
-    border-radius    : 2rem;
+    border-radius    : 1rem;
     background-color : #E9E9ED;
 
     &.current {
-      background-color : $orange;
+      background : orange;
     }
 
     &:hover {
-      $margin          : 1.4;
-
-      transform        : scale(#{$margin});
-      background-color : #ccc;
-      box-shadow       : 0 0 2rem white;
-
-      &:first-child {
-        margin : 0 #{$margin}rem 0 0;
-      }
-
-      &:last-child {
-        margin : 0 0 0 #{$margin}rem;
-      }
-
-      &:not(:first-child):not(:last-child) {
-        margin : 0 #{$margin}rem;
-      }
-
-      & + li, & + span {
-        margin-left : 0;
-      }
+      transform        : scale(1.1);
+      background-color : coral;
     }
   }
 }
